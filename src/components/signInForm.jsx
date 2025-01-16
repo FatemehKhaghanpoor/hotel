@@ -1,8 +1,11 @@
 // import { Button, FormControl, TextField, Typography } from "@mui/material";
 import React from "react";
 import PasswordComponent from "./password";
-import HandleBack from "./handleBack";
+
 import { Button, FormControl, TextField, Typography } from "@mui/material";
+import { HOME_ROUTE } from "../constant/routes";
+import { Link } from "react-router";
+import HomeIcon from "@mui/icons-material/Home";
 
 const SignInForm = ({
   formTitle,
@@ -18,14 +21,17 @@ const SignInForm = ({
     <form onSubmit={handleSubmit} className="m-auto w-fit md:w-[500px]">
       <FormControl className="flex flex-col gap-3 w-full">
         <div className="flex flex-row gap-2 items-center">
-          <HandleBack />
+          <Link to={HOME_ROUTE} className="block text-center">
+            <HomeIcon />
+          </Link>
+
           <Typography variant="h5" className="grow text-center">
             {formTitle}
           </Typography>
         </div>
         <TextField
           defaultValue={emailDefaultValue && emailDefaultValue}
-          label="Email"
+          label="ایمیل"
           fullWidth
           margin="normal"
           type="email"
@@ -41,7 +47,7 @@ const SignInForm = ({
           <small className="text-red-500">{errors?.email?.message}</small>
         )}
         <TextField
-          label="user name"
+          label="نام کاربری"
           type="text"
           fullWidth
           margin="normal"
@@ -70,7 +76,7 @@ const SignInForm = ({
         <Button
           variant="contained"
           color="primary"
-          type="submit"
+          type="ثبت"
           disabled={loading}
         >
           {loading ? "loading" : "submit"}

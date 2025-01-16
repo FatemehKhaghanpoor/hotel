@@ -28,7 +28,7 @@ const ReserveForm = ({
 }) => {
   const [startDate, setStartDate] = useState(new Date());
   return (
-    <form onSubmit={handleSubmit} className="m-auto w-fit md:w-[1000px]">
+    <form onSubmit={handleSubmit} className="m-auto w-fit items-center">
       <FormGroup className="flex flex-col gap-3 w-full top-6">
         <div className="flex flex-row gap-2 items-center">
           <Typography variant="h5" className="grow text-center top-6">

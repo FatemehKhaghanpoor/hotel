@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 
@@ -11,36 +11,26 @@ import useAxios from "../hooks/useAxios";
 import ShowReserve from "../components/showReserve";
 
 import Box from "@mui/material/Box";
-import { useTheme } from "@mui/material/styles";
-import MobileStepper from "@mui/material/MobileStepper";
-import Paper from "@mui/material/Paper";
+
+
+
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
-import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
+
+import Stepper from "@mui/material/Stepper";
+import Step from "@mui/material/Step";
+import StepLabel from "@mui/material/StepLabel";
+import StepContent from "@mui/material/StepContent";
+import { useState } from "react";
 
 
-const steps = [
-  {
-    label:"",
-    description: 1,
-  },
-  {
-    label: "مشاهده رزرو ها",
-    description:2
-     
-  },
-  {
-    label: "پس از پرداخت رزرو شما قطعی میشود",
-    description: 3
-  },
-];
 
 const Reserved = () => {
-  const theme = useTheme();
-  const [activeStep, setActiveStep] = React.useState(0);
-  const [next , setNext]=useState(false)
-  const maxSteps = steps.length;
+  
+  const [activeStep, setActiveStep] = useState(0);
+  const[activeNext, setActiveNext]=useState(false)
+ 
+
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -49,6 +39,9 @@ const Reserved = () => {
   const handleBack = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
+
+ 
+
   const {
     register,
     handleSubmit,
@@ -77,89 +70,156 @@ const Reserved = () => {
     })
       .then(() => {
         toast.success("رزرو شما با موفقیت انجام شد");
-        setNext(true)
+        setActiveNext(true);
       })
-      .catch(() => {toast.error("لطفا دوباره تلاش کنید")
-        setNext(false)
+      .catch(() => {
+        toast.error("لطفا دوباره تلاش کنید");
+       
       });
   };
 
   return (
-    <Box sx={{ maxWidth: 400, flexGrow: 1 }}>
-      <Paper
-        square
-        elevation={0}
-        sx={{
-          display: "flex",
-          alignItems: "center",
-          height: 50,
-          pl: 2,
-          bgcolor: "background.default",
-        }}
-      >
-        <Typography>{steps[activeStep].label}</Typography>
-      </Paper>
-      <Box sx={{ height: 255, maxWidth: 400, width: "100%", p: 2 ,right:0 }}>
-        {steps[activeStep].description === 1 && 
-        
-        (
-          
-          <ReserveForm 
-            formTitle={"به صفحه رزرو خوش آمدید!"}
-            errors={errors}
-            handleSubmit={handleSubmit(onSubmit)}
-            register={register}
-            loading={loading}
-          />
-        )}
-        {steps[activeStep].description ===2 &&
-          <div>
-            
-         {next && <ShowReserve />}
-         {!next && <Typography>رزروی وجود ندارد!</Typography>}
-        </div>
-        }
-        {steps[activeStep].description ===3 &&
-          <div>
-         <Typography>در این سفر برای شما اوقات خوشی را آرزو مندیم</Typography>
-        </div>
-        }
+    <Box sx={{ maxWidth: 400 }}>
+      <Stepper activeStep={activeStep} orientation="vertical">
+        <Step key={1}>
+          <StepLabel>{"اطلاعات سفر"}</StepLabel>
+          <StepContent>
+            <ReserveForm
+              formTitle={"به صفحه رزرو خوش آمدید!"}
+              errors={errors}
+              handleSubmit={handleSubmit(onSubmit)}
+              register={register}
+              loading={loading}
+            />
 
-        
-      </Box>
-      <MobileStepper
-        variant="text"
-        steps={maxSteps}
-        position="static"
-        activeStep={activeStep}
-        nextButton={
+            <Box sx={{ mb: 2 }}>
+              <Button
+                variant="contained"
+                onClick={handleNext}
+                sx={{ mt: 1, mr: 1 }}
+               disabled={!activeNext}
+              >بعدی</Button>
+              
+            </Box>
+          </StepContent>
+        </Step>
+        {/* //------------------ */}
+
+        <Step key={2}>
           
-          <Button
-            size="small"
-            onClick={handleNext}
-            disabled={activeStep === maxSteps - 1}
-            sx={{ top:500, bottom: 0 }}
-          >
-            صفحه بعد
-            {theme.direction === "rtl" ? (
-              <KeyboardArrowLeft />
-            ) : (
-              <KeyboardArrowRight />
-            )}
-          </Button>
-        }
-        backButton={
-          <Button size="small" onClick={handleBack} disabled={activeStep === 0} sx={{ top:500, bottom: 0 }} >
-            {theme.direction === "rtl" ? (
-              <KeyboardArrowRight />
-            ) : (
-              <KeyboardArrowLeft />
-            )}
-            صفحه قبل
-          </Button>
-        }
-      />
+          <StepContent>
+            <ShowReserve/>
+
+            <Box sx={{ mb: 2 }}>
+              <Button
+                variant="contained"
+                onClick={handleNext}
+                sx={{ mt: 1, mr: 1 }}
+              >بعدی</Button>
+              <Button
+                
+                onClick={handleBack}
+                sx={{ mt: 1, mr: 1 }}
+              >
+                قبلی
+              </Button>
+            </Box>
+          </StepContent>
+        </Step>
+        {/* {-------------------} */}
+        <Step key={3}>
+          <StepLabel>{""}</StepLabel>
+          <StepContent>
+            <Typography>پس از پرداخت رزرو شما قطعی میشود</Typography>
+             <Typography>با تشکر</Typography>
+            <Box sx={{ mb: 2 }}>
+              
+              <Button
+                
+                onClick={handleBack}
+                sx={{ mt: 1, mr: 1 }}
+              >
+                قبلی
+              </Button>
+            </Box>
+          </StepContent>
+        </Step>
+
+
+
+      </Stepper>
+     
     </Box>
+
+    // <Box sx={{ maxWidth: 400, flexGrow: 1 }}>
+    //   <Paper
+    //     square
+    //     elevation={0}
+    //     sx={{
+    //       display: "flex",
+    //       alignItems: "center",
+    //       height: 50,
+    //       pl: 2,
+    //       bgcolor: "background.default",
+    //     }}
+    //   >
+    //     <Typography>{steps[activeStep].label}</Typography>
+    //   </Paper>
+    //   <Box sx={{ height: 255, maxWidth: 400, width: "100%", p: 2, right: 0 }}>
+    //     {steps[activeStep].description === 1 && (
+    //
+    //     )}
+    //     {steps[activeStep].description === 2 && (
+    //       <div>
+    //         {next && }
+    //         {!next && <Typography>رزروی وجود ندارد!</Typography>}
+    //       </div>
+    //     )}
+    //     {steps[activeStep].description === 3 && (
+    //       <div>
+    //         <Typography>
+    //           در این سفر برای شما اوقات خوشی را آرزو مندیم
+    //         </Typography>
+    //       </div>
+    //     )}
+    //   </Box>
+    //   <MobileStepper
+    //     variant="text"
+    //     steps={maxSteps}
+    //     position="static"
+    //     activeStep={activeStep}
+    //     nextButton={
+    //       <Button
+    //         size="small"
+    //         onClick={handleNext}
+    //         disabled={activeStep === maxSteps - 1}
+    //         sx={{ top: 500, bottom: 0 }}
+    //       >
+    //         صفحه بعد
+    //         {theme.direction === "rtl" ? (
+    //           <KeyboardArrowLeft />
+    //         ) : (
+    //           <KeyboardArrowRight />
+    //         )}
+    //       </Button>
+    //     }
+    //     backButton={
+    //       <Button
+    //         size="small"
+    //         onClick={handleBack}
+    //         disabled={activeStep === 0}
+    //         sx={{ top: 500, bottom: 0 }}
+    //       >
+    //         {theme.direction === "rtl" ? (
+    //           <KeyboardArrowRight />
+    //         ) : (
+    //           <KeyboardArrowLeft />
+    //         )}
+    //         صفحه قبل
+    //       </Button>
+    //     }
+    //   />
+    // </Box>
   );
 };
 

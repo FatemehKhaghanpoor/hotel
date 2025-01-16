@@ -5,8 +5,9 @@ import { Link, useNavigate } from "react-router";
 import { v4 as uuidv4 } from "uuid";
 import SignInForm from "../components/signInForm";
 import { userApi } from "../constant/api";
-import { LOGIN_ROUTE } from "../constant/routes";
+import {  LOGIN_ROUTE } from "../constant/routes";
 import useAxios from "../hooks/useAxios";
+
 
 const SignIn = () => {
   const {
@@ -47,16 +48,19 @@ const SignIn = () => {
 
   return (
     <>
+     
       <SignInForm
-        formTitle={"Sign In"}
+        formTitle={"ساختن حساب کاربری"}
         errors={errors}
         handleSubmit={handleSubmit(onSubmit)}
         register={register}
         loading={loading}
       />
       <Link to={LOGIN_ROUTE} className="block text-center">
-        login
+        رفتن به صفحه ورود
       </Link>
+
+     
     </>
   );
 };

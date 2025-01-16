@@ -8,14 +8,13 @@ import {
 import React, { Fragment, useState } from "react";
 
 
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemText from "@mui/material/ListItemText";
-import ListItemAvatar from "@mui/material/ListItemAvatar";
-import Avatar from "@mui/material/Avatar";
-import ImageIcon from "@mui/icons-material/Image";
-import WorkIcon from "@mui/icons-material/Work";
-import BeachAccessIcon from "@mui/icons-material/BeachAccess";
+
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+
+import CardContent from '@mui/material/CardContent';
+
+import Typography from '@mui/material/Typography';
 
 import useAxios from "../../hooks/useAxios";
 
@@ -26,69 +25,69 @@ const ShowReserve = () => {
 
   const { startRequest} = useAxios();
   
- 
+
   const [responseItem, ShowResponseItem] = useState([]);
 
   const onSubmit = async (formData) => {
     const response = await startRequest({
       url: reservedApi,
     });
-
-    console.log(responseItem);
-    ShowResponseItem(response);
     
+    
+    ShowResponseItem(response);
+    console.log(responseItem.length
+      
+    );
+   
   };
+  const bull = (
+    <Box
+      component="span"
+      sx={{ display: 'inline-block', mx: '2px', transform: 'scale(0.8)' }}
+    >
+      •
+    </Box>
+  );
 
   return (
     <Fragment>
       <Button variant="contained" color="success" onClick={onSubmit}  >
           نمایش رزرو ها
       </Button>
-   
+
       
       
       {
         responseItem.map((item) => (
           <Fragment key={item.id}>
+             <Card sx={{ minWidth: 275 }}>
+      <CardContent>
+      <Typography variant="h5" component="div">
+          نام هتل {bull}{item.hotel}
+        </Typography>
+        
+       
+        <Typography variant="body2">
+        نوع اتاق {bull}{item.room}
+          <br />
+          
+        </Typography>
+        <Typography variant="body2">
+        تعداد بزرگسال{bull}{item.NumberOfAdult}
+          <br />
+          
+        </Typography>
+        <Typography variant="body2">
+        تعداد کودک{bull}{item.NumberOfChild}
+          <br />
+          
+        </Typography>
+      </CardContent>
+    
+      <Divider/>
+    </Card>
             
-            <List
-              sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}
-            >
-              <ListItem>
-                <ListItemAvatar>
-                  <Avatar>
-                    <ImageIcon />
-                  </Avatar>
-                </ListItemAvatar>
-                <ListItemText primary="نام هتل" secondary={item.hotel} />
-              </ListItem>
-              <ListItem>
-                <ListItemAvatar>
-                  <Avatar>
-                    <WorkIcon />
-                  </Avatar>
-                </ListItemAvatar>
-                <ListItemText primary="نوع اتاق" secondary={item.room} />
-              </ListItem>
-              <ListItem>
-                <ListItemAvatar>
-                  <Avatar>
-                    <BeachAccessIcon />
-                  </Avatar>
-                </ListItemAvatar>
-                <ListItemText primary="تعداد بزرگسال" secondary={item.NumberOfAdult} />
-              </ListItem>
-              <ListItem>
-                <ListItemAvatar>
-                  <Avatar>
-                    <BeachAccessIcon />
-                  </Avatar>
-                </ListItemAvatar>
-                <ListItemText primary="تعداد کودکان" secondary={item.NumberOfChild} />
-              </ListItem>
-            </List>
-
-            <Divider />
+           
           </Fragment>
         ))
        }

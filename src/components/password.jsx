@@ -15,7 +15,7 @@ const PasswordComponent = forwardRef(
         defaultValue={defaultValue && defaultValue}
         ref={ref}
         type={visibility ? "text" : "password"}
-        label={"Password"}
+        label={"رمز عبور"}
         InputProps={{
           endAdornment: (
             <InputAdornment position="end">

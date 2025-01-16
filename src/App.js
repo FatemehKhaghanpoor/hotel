@@ -31,7 +31,7 @@ function App() {
       sx={{
         display: "flex",
         flexDirection: "column",
-        alignItems: "center",
+        alignItems: "",
         justifyContent: "space-between",
       }}
     >

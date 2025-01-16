@@ -9,7 +9,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
-import { Link, Outlet,  useNavigate } from "react-router";
+import { Link,   useNavigate } from "react-router";
 import HandleBack from "../components/handleBack";
 import PasswordComponent from "../components/password";
 
@@ -67,17 +67,19 @@ const Login = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="m-auto w-fit">
+     
       <FormControl className="flex flex-col gap-3">
-        <Outlet />
+        
         <div className="flex flex-row gap-2 items-center">
-          <HandleBack />
+         
           <Typography variant="h5" className="grow text-center">
-            Login
+           برای رزرو هتل ابتدا وارد شوید
           </Typography>
+          
         </div>
 
         <TextField
-          label="user name"
+          label="نام کاربری"
           type="text"
           fullWidth
           margin="normal"
@@ -102,14 +104,15 @@ const Login = () => {
           {loading || loadingUser ? (
             <CircularProgress size="30px" color="inherit" />
           ) : (
-            "Login"
+            "ورود"
           )}
         </Button>
      
       </FormControl>
       <Link to={SIGNIN_ROUTE} className="block text-center">
-        create new account
+        حساب کاربری جدید بسازید
       </Link>
+      <HandleBack/>
     </form>
   );
 };
