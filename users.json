@@ -1,0 +1,98 @@
+{
+  "users": [
+    {
+      "id": "0e1d07b0-6f76-441f-b0ca-34b37967f6f4",
+      "username": "coffeeshow@coffee",
+      "email": "khaghanpoor@gmail.com",
+      "password": "khaghanpoor12@M"
+    },
+    {
+      "id": "1ebfda03-cc42-4e4d-bc51-1f06062a69fc",
+      "username": "fatemehkh",
+      "email": "khaghanpoor@gmail.com",
+      "password": "khaghanpoor12@M124"
+    },
+    {
+      "id": "b2251616-fa3f-41ba-89bf-3980f50aa52c",
+      "username": "maryam",
+      "email": "khaghanpoor@gmail.com",
+      "password": "khaghanpoor12@M1245"
+    },
+    {
+      "id": "2fa5d838-03a7-473e-b086-242060b7610a",
+      "username": "fatemeh",
+      "email": "khaghanpoor@gmail.com",
+      "password": "khaghanpoor12@M1245"
+    },
+    {
+      "id": "074d8280-e4fa-4788-8ae7-bcb94a13412d",
+      "username": "fatemeh",
+      "email": "khaghanpoor@gmail.com",
+      "password": "1234@Mmm"
+    },
+    {
+      "id": "bee25b3b-370d-4148-9384-086863e900fd",
+      "username": "khaghanpoor@gmail.com",
+      "email": "khaghanpoor@gmail.com",
+      "password": "khaghanpoor12@M1245"
+    },
+    {
+      "id": "fe2a3122-b49e-4a27-9ddf-5d45bd0a8e6c",
+      "username": "fatemeh",
+      "email": "khaghanpoor@gmail.com",
+      "password": "1234@Mmm"
+    },
+    {
+      "id": "c76d01a6-7b91-41b1-9ee8-6d639597a927",
+      "username": "fatemeh",
+      "email": "khaghanpoor@gmail.com",
+      "password": "khaghanpoor12@M12456"
+    },
+    {
+      "id": "694b97e3-08c5-4b2d-9676-bedb5882fd1b",
+      "username": "mary",
+      "email": "khaghanpoor@gmail.com",
+      "password": "1234@Mmm123"
+    },
+    {
+      "id": "f4181cc5-c077-420b-9930-adfaaef6fb0b",
+      "username": "fatemeh",
+      "email": "khaghanpoor@gmail.com",
+      "password": "khaghanpoor12@M12456"
+    },
+    {
+      "id": "001316b6-b7a6-4cfa-a905-8d2341715c4d",
+      "username": "fatemeh",
+      "email": "khaghanpoor@gmail.com",
+      "password": "khaghanpoor12@M12456"
+    },
+    {
+      "id": "62072c93-11e4-44ac-b250-2f39ff21b74c",
+      "username": "5388992829",
+      "email": "khaghanpoor@gmail.com",
+      "password": "khaghanpoor12@M12456"
+    }
+  ],
+  "reserved": [
+    {
+      "id": "b941d096-1820-4e4c-bf88-9dd578caa666",
+      "hotel": "آزادی",
+      "room": "دو تخته",
+      "number": "یک تخته"
+    },
+    {
+      "id": "2bcddd09-af5c-4fa1-b976-5f3ee8c34109",
+      "hotel": "عالی قاپو",
+      "room": "یک تخته",
+      "NumberOfAdult": "1",
+      "NumberOfChild": "1"
+    },
+    {
+      "id": "eaf1eee0-9b7d-4245-b57c-3d834060ad90",
+      "hotel": "عالی قاپو",
+      "room": "یک تخته",
+      "NumberOfAdult": "1",
+      "NumberOfChild": "1"
+    }
+  ]
+}
