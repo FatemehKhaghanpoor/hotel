@@ -12,7 +12,7 @@ const userReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_USER_INFO:
       return (state.user = action.payload);
-      //return { ...state , use:{...action.payload}}
+     
     default:
       return state;
   }
